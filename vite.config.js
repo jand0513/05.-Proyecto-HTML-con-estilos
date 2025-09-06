@@ -13,6 +13,9 @@ export default defineConfig({
     sourcemap: true,
   },
   
+  // Base path for GitHub Pages
+  base: '/05.-Proyecto-HTML-con-estilos/',
+  
   // CSS/Sass configuration (remove problematic settings)
   css: {
     preprocessorOptions: {
