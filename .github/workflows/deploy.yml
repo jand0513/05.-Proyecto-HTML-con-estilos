@@ -35,6 +35,12 @@ jobs:
     - name: Build project
       run: npm run build
 
+    - name: Copy HTML files to dist
+      run: |
+        cp *.html dist/
+        cp -r img dist/ 2>/dev/null || true
+        ls -la dist/
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
