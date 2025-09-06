@@ -11,12 +11,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    assetsDir: 'assets',
   },
   
   // Base path for GitHub Pages
-  base: '/05.-Proyecto-HTML-con-estilos/',
+  base: './',
   
-  // CSS/Sass configuration (remove problematic settings)
+  // CSS/Sass configuration
   css: {
     preprocessorOptions: {
       scss: {
