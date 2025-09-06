@@ -1,0 +1,194 @@
+@use '../abstracts' as *;
+
+// ===== COURSES PAGE STYLES =====
+.courses-page {
+  .courses-list {
+    display: grid;
+    gap: $spacing-2xl;
+    margin-top: $spacing-2xl;
+  }
+}
+
+.course-item {
+  background: $white;
+  border-radius: $border-radius-xl;
+  padding: $spacing-2xl;
+  box-shadow: $shadow-md;
+  transition: $transition-normal;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $gradient-primary;
+    transform: scaleX(0);
+    transition: $transition-normal;
+  }
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+    
+    &::before {
+      transform: scaleX(1);
+    }
+    
+    img {
+      transform: scale(1.05);
+    }
+  }
+  
+  h2 {
+    color: $primary-dark;
+    margin-bottom: $spacing-lg;
+    font-size: 1.5rem;
+  }
+  
+  img {
+    width: 100%;
+    border-radius: $border-radius-lg;
+    margin-bottom: $spacing-lg;
+    transition: $transition-normal;
+    object-fit: cover;
+    height: 250px;
+  }
+  
+  p {
+    font-size: 1.125rem;
+    margin-bottom: $spacing-lg;
+    color: #6b7280; // gray-600
+  }
+  
+  .course-features {
+    margin-bottom: $spacing-xl;
+    padding: 0;
+    
+    li {
+      background: rgba($success-green, 0.1);
+      padding: $spacing-sm $spacing-md;
+      margin-bottom: $spacing-sm;
+      border-radius: $border-radius-md;
+      color: #374151; // gray-700
+      font-weight: 500;
+      border-left: 3px solid $success-green;
+      transition: $transition-normal;
+      
+      &:hover {
+        background: rgba($success-green, 0.15);
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
+// ===== ABOUT PAGE STYLES =====
+.about-page {
+  .history-section {
+    background: linear-gradient(135deg, rgba($primary-blue, 0.03) 0%, rgba($accent-orange, 0.03) 100%);
+    padding: $spacing-2xl;
+    border-radius: $border-radius-xl;
+    margin: $spacing-2xl 0;
+    animation: fadeInLeft 0.8s ease-out;
+    
+    h2 {
+      color: $primary-dark;
+      margin-bottom: $spacing-lg;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      margin-bottom: $spacing-lg;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  .team-section {
+    background: $white;
+    padding: $spacing-2xl;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-md;
+    text-align: center;
+    margin: $spacing-2xl 0;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    
+    h2 {
+      color: $primary-dark;
+      margin-bottom: $spacing-lg;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      margin-bottom: $spacing-xl;
+    }
+    
+    figure {
+      margin: 0;
+      
+      img {
+        border-radius: $border-radius-xl;
+        box-shadow: $shadow-lg;
+        margin: 0 auto $spacing-md;
+        max-width: 800px;
+      }
+      
+      figcaption {
+        font-style: italic;
+        color: #6b7280; // gray-600
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .values-section {
+    background: linear-gradient(135deg, rgba($accent-orange, 0.05) 0%, rgba($primary-light, 0.05) 100%);
+    padding: $spacing-2xl;
+    border-radius: $border-radius-xl;
+    margin: $spacing-2xl 0;
+    animation: fadeInRight 0.8s ease-out 0.4s both;
+    
+    h2 {
+      color: $primary-dark;
+      margin-bottom: $spacing-xl;
+      text-align: center;
+    }
+    
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: $spacing-lg;
+      padding: 0;
+      
+      li {
+        background: $white;
+        padding: $spacing-lg;
+        border-radius: $border-radius-lg;
+        box-shadow: $shadow-sm;
+        border-left: 4px solid $accent-orange;
+        transition: $transition-normal;
+        
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: $shadow-md;
+          border-left-color: $primary-blue;
+        }
+        
+        strong {
+          color: $primary-dark;
+          font-size: 1.125rem;
+          display: block;
+          margin-bottom: $spacing-sm;
+        }
+      }
+    }
+  }
+}

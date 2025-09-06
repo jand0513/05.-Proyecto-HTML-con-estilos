@@ -1,0 +1,77 @@
+// ===== FONTS =====
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap');
+
+$primary-font: "Poppins", sans-serif;
+$secondary-font: "Inter", sans-serif;
+$signature-font: "Orbitron", 'Impact', 'Arial Black', sans-serif;
+
+// ===== COLORS =====
+// Primary Colors (Academia Theme)
+$primary-blue: #1e40af;
+$primary-light: #3b82f6;
+$primary-dark: #1e3a8a;
+$accent-orange: #f59e0b;
+$accent-light: #fbbf24;
+
+// Neutral Colors
+$white: #ffffff;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-500: #6b7280;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+
+// Success and Error
+$success-green: #10b981;
+$error-red: #ef4444;
+$warning-yellow: #f59e0b;
+
+// ===== GRADIENTS =====
+$gradient-primary: linear-gradient(135deg, #{$primary-blue} 0%, #{$primary-light} 100%);
+$gradient-accent: linear-gradient(135deg, #{$accent-orange} 0%, #{$accent-light} 100%);
+$gradient-hero: linear-gradient(135deg, #{$primary-dark} 0%, #{$primary-blue} 50%, #{$primary-light} 100%);
+
+// ===== SPACING =====
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-2xl: 3rem;     // 48px
+$spacing-3xl: 4rem;     // 64px
+
+// ===== BREAKPOINTS (Estándares de la industria) =====
+// Mobile First Approach
+$mobile-max: 767px;          // Móvil (hasta 767px)
+$tablet-min: 768px;          // Tablet inicio
+$tablet-max: 1023px;         // Tablet (768px - 1023px)
+$desktop-min: 1024px;        // Desktop inicio
+$desktop-max: 1439px;        // Desktop (1024px - 1439px)
+$large-desktop-min: 1440px;  // Desktop grande (1440px+)
+
+// Variables legacy para compatibilidad
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ===== BORDERS =====
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 0.75rem;
+$border-radius-xl: 1rem;
+
+// ===== SHADOWS =====
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// ===== TRANSITIONS =====
+$transition-fast: 0.15s ease-in-out;
+$transition-normal: 0.3s ease-in-out;
+$transition-slow: 0.5s ease-in-out;

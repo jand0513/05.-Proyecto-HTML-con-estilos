@@ -1,0 +1,119 @@
+// Páginas de noticias - noticia1.html y noticia2.html
+
+.news-article {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  h1 {
+    color: #1e40af;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+.news-image {
+  margin: 2rem 0;
+  text-align: center;
+  
+  img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  
+  figcaption {
+    margin-top: 0.75rem;
+    color: #6b7280;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+.news-content {
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #1e40af;
+  margin-top: 2rem;
+  
+  h2 {
+    color: #1e40af;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
+    &::before {
+      content: "📌 ";
+      margin-right: 0.5rem;
+    }
+  }
+  
+  p {
+    color: #374151;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    &:first-of-type {
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+  }
+  
+  // Efectos hover
+  &:hover {
+    background: #f3f4f6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .news-article {
+    margin: 1rem;
+    padding: 1.5rem;
+    
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  .news-content {
+    padding: 1.5rem;
+    
+    h2 {
+      font-size: 1.3rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}

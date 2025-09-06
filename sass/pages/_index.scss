@@ -1,0 +1,183 @@
+@use '../abstracts' as *;
+
+// ===== INDEX PAGE STYLES =====
+.about-section {
+  background: $white;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-md;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+  
+  h2 {
+    margin-bottom: $spacing-lg;
+    color: $primary-dark;
+  }
+  
+  p {
+    font-size: 1.125rem;
+    margin-bottom: $spacing-xl;
+  }
+  
+  a {
+    @extend .btn !optional;
+    @extend .btn-secondary !optional;
+  }
+}
+
+.courses-section {
+  background: linear-gradient(135deg, rgba($primary-blue, 0.02) 0%, rgba($accent-orange, 0.02) 100%);
+  padding: $spacing-2xl;
+  border-radius: $border-radius-xl;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+  
+  h2 {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    color: $primary-dark;
+  }
+  
+  > p {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: $spacing-xl;
+  }
+  
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+    padding: 0;
+    
+    li {
+      background: $white;
+      padding: $spacing-lg;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-sm;
+      transition: $transition-normal;
+      text-align: center;
+      border-left: 4px solid $primary-blue;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: $shadow-lg;
+        border-left-color: $accent-orange;
+      }
+      
+      a {
+        font-weight: 600;
+        font-size: 1.125rem;
+        color: $primary-dark;
+        
+        &:hover {
+          color: $accent-orange;
+        }
+        
+        &::after {
+          background: $accent-orange;
+        }
+      }
+    }
+  }
+  
+  > a {
+    @extend .btn !optional;
+    @extend .btn-primary !optional;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+.news-section {
+  background: $white;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-md;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  
+  // MOBILE (hasta 767px) - Prevenir overflow
+  @include mobile-only {
+    padding: $spacing-lg;
+    overflow: hidden;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    color: $primary-dark;
+  }
+  
+  > p {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: $spacing-xl;
+  }
+  
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+    padding: 0;
+    
+    // MOBILE (hasta 767px) - Grid responsive
+    @include mobile-only {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+    
+    li {
+      background: linear-gradient(135deg, rgba($accent-orange, 0.05) 0%, rgba($primary-light, 0.05) 100%);
+      padding: $spacing-lg;
+      border-radius: $border-radius-lg;
+      border-top: 3px solid $accent-orange;
+      transition: $transition-normal;
+      
+      // MOBILE (hasta 767px) - Ajustes para prevenir overflow
+      @include mobile-only {
+        padding: $spacing-md;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: $shadow-md;
+        
+        // MOBILE - Reduce animation
+        @include mobile-only {
+          transform: translateY(-1px);
+        }
+      }
+      
+      a {
+        font-weight: 500;
+        color: #1f2937; // gray-800 directo
+        word-break: break-word;
+        
+        // MOBILE (hasta 767px) - Texto responsive
+        @include mobile-only {
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+        
+        &:hover {
+          color: $primary-blue;
+        }
+      }
+    }
+  }
+  
+  > a {
+    @extend .btn !optional;
+    @extend .btn-accent !optional;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

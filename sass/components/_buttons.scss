@@ -1,0 +1,87 @@
+@use "sass:color";
+@use '../abstracts' as *;
+
+// ===== MODERN BUTTONS =====
+.btn {
+  display: inline-block;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  font-family: $primary-font;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: $transition-normal;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: $transition-normal;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-primary {
+  background: $gradient-primary;
+  color: $white;
+  box-shadow: $shadow-md;
+  
+  &:hover {
+    background: linear-gradient(135deg, $primary-dark 0%, $primary-blue 100%);
+    color: $white;
+  }
+}
+
+.btn-secondary {
+  background: $white;
+  color: $primary-blue;
+  border: 2px solid $primary-blue;
+  
+  &:hover {
+    background: $primary-blue;
+    color: $white;
+  }
+}
+
+.btn-accent {
+  background: $gradient-accent;
+  color: $white;
+  box-shadow: $shadow-md;
+  
+  &:hover {
+    background: linear-gradient(135deg, #{color.scale($accent-orange, $lightness: -10%)} 0%, #{$accent-orange} 100%);
+    color: $white;
+  }
+}
+
+// Course link buttons
+.course-link {
+  @extend .btn !optional;
+  @extend .btn-primary !optional;
+  margin-top: $spacing-md;
+  
+  &::after {
+    display: none; // Remove underline effect
+  }
+}

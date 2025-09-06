@@ -1,0 +1,146 @@
+// ===== RESPONSIVE MIXINS (Estándares de la industria) =====
+
+// Mobile First Approach
+@mixin mobile-only {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin large-desktop-up {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+// Combinaciones útiles
+@mixin mobile-tablet {
+  @media (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin tablet-desktop {
+  @media (min-width: 768px) and (max-width: 1439px) {
+    @content;
+  }
+}
+
+// ===== LEGACY MIXINS (Para compatibilidad) =====
+// ===== RESPONSIVE MIXINS (Estándares de la industria) =====
+
+// Mobile-first approach
+@mixin mobile {
+  @media screen and (max-width: $mobile-max) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media screen and (min-width: $tablet-min) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-min) and (max-width: $desktop-max) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media screen and (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media screen and (min-width: $large-desktop-min) {
+    @content;
+  }
+}
+
+// Mixins para rangos específicos
+@mixin mobile-tablet {
+  @media screen and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+@mixin tablet-desktop {
+  @media screen and (min-width: $tablet-min) and (max-width: $desktop-max) {
+    @content;
+  }
+}
+
+// Legacy mixins (mantener compatibilidad con código existente)
+@mixin breakpoint($point) {
+  @if $point == largedesktop {
+    @media (max-width: 1920px) and (min-width: 1441px) {
+      @content;
+    }
+  }
+  @if $point == desktop {
+    @media (max-width: 1440px) and (min-width: 1025px) {
+      @content;
+    }
+  } @else if $point == tablet {
+    @media (max-width: 1024px) and (min-width: 768px) {
+      @content;
+    }
+  } @else if $point == tabletmobile {
+    @media (max-width: 1024px) and (min-width: 320px) {
+      @content;
+    }
+  } @else if $point == mobileandrotate {
+    @media (max-width: 767px) and (min-width: 320px) {
+      @content;
+    }
+  } @else if $point == mobilerotate {
+    @media (max-width: 767px) and (min-width: 479px) {
+      @content;
+    }
+  } @else if $point == mobile {
+    @media (max-width: 480px) and (min-width: 320px) {
+      @content;
+    }
+  } @else if $point == smallmobile {
+    @media (max-width: 650px) and (min-width: 568px) {
+      @content;
+    }
+  } @else if $point == rotate {
+    @media (max-height: 550px) and (min-height: 0) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@use '../abstracts' as *;
+
+// ===== MAIN LAYOUT =====
+main {
+  min-height: calc(100vh - 200px);
+  padding: $spacing-xl $spacing-lg;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-lg $spacing-md;
+  }
+}
+
+// Section containers
+section {
+  margin-bottom: $spacing-3xl;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Hero sections
+.hero-section {
+  text-align: center;
+  padding: $spacing-3xl 0;
+  background: linear-gradient(135deg, rgba($primary-blue, 0.05) 0%, rgba($accent-orange, 0.05) 100%);
+  border-radius: $border-radius-xl;
+  margin-bottom: $spacing-3xl;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba($primary-light, 0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  h1 {
+    margin-bottom: $spacing-lg;
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  p {
+    font-size: 1.25rem;
+    color: #6b7280; // gray-500 directo
+    max-width: 600px;
+    margin: 0 auto $spacing-xl;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+  
+  img {
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-xl;
+    animation: scaleIn 0.8s ease-out 0.4s both;
+    margin: 0 auto;
+  }
+}
+
+// Container utilities
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-md;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 $spacing-lg;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $spacing-md;
+  }
+}

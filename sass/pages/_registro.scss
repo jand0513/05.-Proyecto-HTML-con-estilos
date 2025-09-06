@@ -1,0 +1,231 @@
+// Specific styles for registration page
+@use "../abstracts" as *;
+
+// Page background with gradient
+body {
+  background: linear-gradient(135deg, 
+    rgba($primary-blue, 0.05) 0%, 
+    rgba($white, 1) 25%, 
+    rgba($accent-orange, 0.03) 75%, 
+    rgba($primary-light, 0.08) 100%);
+  min-height: 100vh;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba($primary-blue, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba($accent-orange, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+.form-title {
+  color: $primary-blue;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: $spacing-lg;
+  position: relative;
+  font-family: $primary-font;
+  
+  // Efecto de texto degradado
+  background: linear-gradient(135deg, $primary-blue 0%, $primary-light 50%, $accent-orange 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: $gradient-accent;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba($accent-orange, 0.3);
+  }
+  
+  // Animación de pulso sutil
+  animation: titlePulse 3s ease-in-out infinite;
+  
+  @include breakpoint(mobile) {
+    font-size: 2.8rem;
+  }
+}
+
+@keyframes titlePulse {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.02); 
+    filter: brightness(1.1);
+  }
+}
+
+.form-subtitle {
+  text-align: center;
+  color: $gray-700;
+  font-size: 1.3rem;
+  margin-bottom: $spacing-3xl;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  font-family: $secondary-font;
+  font-weight: 400;
+  opacity: 0.9;
+  
+  @include breakpoint(mobile) {
+    font-size: 1.125rem;
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+// Animación de entrada mejorada para el formulario
+.form-container {
+  animation: slideInUp 1s ease-out;
+  
+  // Efecto de partículas flotantes
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba($primary-blue, 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 85% 85%, rgba($accent-orange, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    pointer-events: none;
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-10px) rotate(1deg); 
+  }
+  66% { 
+    transform: translateY(-5px) rotate(-1deg); 
+  }
+}
+
+// Mejoras para los grupos de formulario
+.form-group {
+  position: relative;
+  
+  // Animación escalonada para cada campo
+  animation: fadeInUp 0.8s ease-out;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i + 2}) { // +2 porque título y subtítulo van primero
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+  
+  // Efecto de foco mejorado
+  .form-input:focus + .form-label,
+  .form-textarea:focus + .form-label {
+    color: $primary-blue;
+    transform: translateY(-3px);
+    transition: all $transition-normal;
+  }
+}
+
+// Mejora para el input de archivo con estilo más moderno
+.form-file {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(135deg, $gray-50 0%, $white 100%);
+  border: 2px dashed rgba($primary-blue, 0.3);
+  transition: all $transition-normal;
+  color: transparent; // Oculta el texto por defecto
+  
+  &:hover {
+    border-color: $primary-blue;
+    background: linear-gradient(135deg, rgba($primary-blue, 0.05) 0%, $white 100%);
+    transform: translateY(-2px);
+  }
+  
+  &::before {
+    content: '📎 Seleccionar archivo';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    color: $gray-700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-lg;
+    font-weight: 500;
+    pointer-events: none; // Permite que los clicks pasen al input
+    font-family: $secondary-font;
+    transition: all $transition-normal;
+  }
+  
+  &:hover::before {
+    color: $primary-blue;
+    background: rgba($primary-blue, 0.05);
+  }
+}
+
+// Responsive adjustments mejorados
+@include breakpoint(tablet) {
+  .form-container {
+    margin: $spacing-2xl $spacing-lg;
+    padding: $spacing-2xl;
+  }
+}
+
+@include breakpoint(mobile) {
+  .form-container {
+    margin: $spacing-lg $spacing-md;
+    padding: $spacing-xl;
+    
+    &::after {
+      background-size: 30px 30px;
+    }
+  }
+  
+  .form-group {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// Efecto adicional para mejorar la experiencia visual
+.form-container:hover .form-title {
+  animation-play-state: paused;
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}

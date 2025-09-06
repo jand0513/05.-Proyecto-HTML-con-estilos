@@ -1,0 +1,233 @@
+@use '../abstracts' as *;
+
+// =================================================================
+// RESPONSIVE BASE STYLES
+// =================================================================
+
+// Container responsive universal
+.container, .main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    padding: 0 1.5rem;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    padding: 0 1rem;
+  }
+}
+
+// Typography responsive
+h1 {
+  font-size: 2.5rem;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    font-size: 2.2rem;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    font-size: 1.8rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    font-size: 1.8rem;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    font-size: 1.5rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    font-size: 1.4rem;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    font-size: 1.2rem;
+  }
+}
+
+// Content sections responsive
+.content-section {
+  padding: 4rem 0;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    padding: 3rem 0;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    padding: 2rem 0;
+  }
+}
+
+// Grid responsive universal
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+// Cards responsive
+.card {
+  padding: 2rem;
+  border-radius: $border-radius-lg;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    padding: 1.5rem;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    padding: 1rem;
+  }
+}
+
+// Buttons responsive
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.95rem;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+// Images responsive
+.responsive-image {
+  width: 100%;
+  height: auto;
+  border-radius: $border-radius-md;
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    margin: 1rem 0;
+  }
+}
+
+// Hero sections responsive
+.hero-section {
+  padding: 6rem 0;
+  text-align: center;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    padding: 4rem 0;
+  }
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    padding: 3rem 0;
+  }
+}
+
+// Forms responsive
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    margin-bottom: 1rem;
+  }
+}
+
+// Navigation responsive utilities
+.hide-mobile {
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    display: none !important;
+  }
+}
+
+.hide-tablet {
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  // DESKTOP (1024px+)
+  @include desktop-up {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none;
+  
+  // MOBILE (hasta 767px)
+  @include mobile-only {
+    display: block !important;
+  }
+}
+
+.show-tablet {
+  display: none;
+  
+  // TABLET (768px - 1023px)
+  @include tablet-only {
+    display: block !important;
+  }
+}
+
+.show-desktop {
+  display: none;
+  
+  // DESKTOP (1024px+)
+  @include desktop-up {
+    display: block !important;
+  }
+}

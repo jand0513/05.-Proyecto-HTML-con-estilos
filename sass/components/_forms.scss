@@ -1,0 +1,389 @@
+@use '../abstracts' as *;
+
+// ===== FORM COMPONENTS =====
+
+// Contenedor principal del formulario
+.form-container {
+  max-width: 100%;
+  margin: $spacing-3xl auto;
+  padding: $spacing-3xl;
+  background: linear-gradient(145deg, $white 0%, $gray-50 100%);
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-xl, 0 0 0 1px rgba($primary-blue, 0.1);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  font-family: $primary-font;
+  position: relative;
+  overflow: hidden;
+  
+  // Efecto de gradiente en el borde
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(145deg, rgba($primary-light, 0.3) 0%, rgba($accent-orange, 0.2) 100%);
+    border-radius: $border-radius-xl;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity $transition-normal;
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      $shadow-xl, 
+      0 30px 60px -12px rgba($primary-blue, 0.15),
+      0 0 0 1px rgba($primary-blue, 0.2);
+    transition: all $transition-normal;
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    margin: $spacing-lg;
+    padding: $spacing-2xl;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    margin: $spacing-md;
+    padding: $spacing-xl;
+  }
+}
+
+// Títulos de formulario
+.form-title {
+  text-align: center;
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: $primary-blue; // Fallback
+  margin-bottom: $spacing-lg;
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: $primary-font;
+  letter-spacing: -0.02em;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -$spacing-sm;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: $gradient-accent;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 2rem;
+  }
+}
+
+.form-subtitle {
+  text-align: center;
+  color: $gray-700;
+  margin-bottom: $spacing-3xl;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  font-family: $secondary-font;
+  font-weight: 400;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.125rem;
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+// Grupos de campos
+.form-group {
+  margin-bottom: $spacing-2xl;
+  position: relative;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  // Efecto de enfoque en el grupo
+  &:focus-within {
+    .form-label {
+      color: $primary-blue;
+      transform: translateY(-2px);
+      transition: all $transition-normal;
+    }
+  }
+}
+
+// Labels
+.form-label {
+  display: block;
+  margin-bottom: $spacing-md;
+  font-weight: 600;
+  color: $gray-800;
+  font-size: 1rem;
+  font-family: $primary-font;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  transition: all $transition-normal;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: -$spacing-sm;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: $gradient-primary;
+    border-radius: 2px;
+    transition: height $transition-normal;
+  }
+  
+  .form-group:focus-within &::before {
+    height: 100%;
+  }
+}
+
+// Inputs base
+.form-input {
+  width: 100%;
+  padding: $spacing-lg $spacing-xl;
+  border: 2px solid rgba($gray-300, 0.5);
+  border-radius: $border-radius-lg;
+  font-size: 1.125rem;
+  font-family: $secondary-font;
+  font-weight: 400;
+  background: linear-gradient(145deg, $white 0%, rgba($gray-50, 0.5) 100%);
+  transition: all $transition-normal;
+  box-sizing: border-box;
+  position: relative;
+  
+  &::placeholder {
+    color: rgba($gray-500, 0.7);
+    font-style: italic;
+    font-weight: 300;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+    box-shadow: 
+      0 0 0 4px rgba($primary-blue, 0.1),
+      0 8px 25px rgba($primary-blue, 0.15);
+    background: $white;
+    transform: translateY(-2px);
+  }
+  
+  &:hover:not(:focus) {
+    border-color: rgba($primary-blue, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($gray-500, 0.1);
+  }
+  
+  &:invalid:not(:placeholder-shown) {
+    border-color: $error-red;
+    box-shadow: 0 0 0 3px rgba($error-red, 0.1);
+    background: rgba($error-red, 0.02);
+  }
+  
+  &:valid:not(:placeholder-shown) {
+    border-color: $success-green;
+    box-shadow: 0 0 0 3px rgba($success-green, 0.1);
+    background: rgba($success-green, 0.02);
+  }
+}
+
+// Textarea específico
+.form-textarea {
+  @extend .form-input;
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+// Input de archivo
+.form-file {
+  @extend .form-input;
+  padding: $spacing-md;
+  cursor: pointer;
+  
+  &::-webkit-file-upload-button {
+    background: $primary-blue;
+    color: $white;
+    border: none;
+    padding: $spacing-sm $spacing-lg;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: $spacing-md;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background: #1e3a8a; /* Versión más oscura de primary-blue */
+    }
+  }
+}
+
+// Botón de envío
+.form-submit {
+  width: 100%;
+  padding: $spacing-xl $spacing-2xl;
+  background: $gradient-primary;
+  color: $white;
+  border: none;
+  border-radius: $border-radius-lg;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: $primary-font;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all $transition-normal;
+  margin-top: $spacing-2xl;
+  position: relative;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  
+  // Efecto de brillo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($white, 0.3), transparent);
+    transition: left $transition-slow;
+  }
+  
+  // Efecto de ondas
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba($white, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      $shadow-xl,
+      0 20px 40px rgba($primary-blue, 0.3);
+    background: linear-gradient(135deg, 
+      #3b82f6 0%, 
+      #60a5fa 100%);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(-2px);
+    
+    &::after {
+      width: 300px;
+      height: 300px;
+    }
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    background: #9ca3af; /* Gray 400 color fixed */
+    
+    &:hover {
+      transform: none;
+      box-shadow: $shadow-md;
+    }
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-lg;
+    font-size: 1.125rem;
+    letter-spacing: 1px;
+  }
+}
+
+// Efectos de validación
+.form-group.success .form-input {
+  border-color: $success-green;
+  background: rgba($success-green, 0.05);
+}
+
+.form-group.error .form-input {
+  border-color: $error-red;
+  background: rgba($error-red, 0.05);
+}
+
+// Animaciones
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.form-group {
+  animation: fadeInUp 0.6s ease-out;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+// Responsive improvements
+@media (max-width: $breakpoint-sm) {
+  .form-container {
+    margin: $spacing-md;
+    padding: $spacing-lg;
+  }
+  
+  .form-input {
+    padding: $spacing-md;
+  }
+  
+  .form-submit {
+    padding: $spacing-lg;
+    font-size: 1rem;
+  }
+}

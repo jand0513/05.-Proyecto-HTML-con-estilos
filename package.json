@@ -1,0 +1,24 @@
+{
+  "name": "conquer-academy",
+  "version": "0.0.1",
+  "description": "Plataforma de aprendizaje online - Conquer Academy",
+  "private": true,
+  "keywords": [
+    "academy",
+    "education",
+    "courses",
+    "online-learning"
+  ],
+  "license": "MIT",
+  "author": "AndresVillarroel",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+  "sass": "^1.90.0",
+  "vite": "^7.1.2"
+  }
+}
